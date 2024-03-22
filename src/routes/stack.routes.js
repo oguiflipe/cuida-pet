@@ -3,8 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import Account from '../pages/CreateAccount';
-import Login from '../pages/Login/Login';
-import Home from '../pages/Home/Home';
+import Login from '../pages/Login';
+import Settings from '../pages/Settings';
+import Home from '../pages/Home';
 import Pets from '../pages/Pets';
 import AddPets from '../pages/CratePets';
 
@@ -41,8 +42,8 @@ function TabRoutes() {
         />
 
         <Tab.Screen 
-        name="Login" 
-        component={Login} 
+        name="Settings" 
+        component={Settings} 
         options={{
           tabBarIcon: ({color, size}) => <Ionicons name="settings-outline"size={size} color={color} />
         }}
@@ -61,9 +62,10 @@ function StackRouter() {
         tabBarShowLabel: false
       }}
     >
-        <Stack.Screen name="Home" component={TabRoutes} />
-        <Stack.Screen name="Cadastro" component={Account} />
-        <Stack.Screen name='NewPet' component={AddPets} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Home" component={TabRoutes} />
+      <Stack.Screen name="Cadastro" component={Account} />
+      <Stack.Screen name='NewPet' component={AddPets} />
     </Stack.Navigator>
   );
 }

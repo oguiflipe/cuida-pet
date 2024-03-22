@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { PrimaryButton } from '../../components/PrimaryButton';
+import { PrimaryInput } from '../../components/PrimaryInput';
 
 
 
@@ -11,27 +13,30 @@ export default function Login({navigation}){
 
     return( 
     <View style={styles.container}>
-      <View style={styles.containerInput}>
         <View style={styles.containerImg}> 
           <Ionicons name="paw-outline"size={100} color='#6E42F1' />
         </View>
-        <TextInput 
-          style={styles.input}
+
+        <PrimaryInput 
           placeholder='E-mail:'
           onChange={setEmail}
-          defaultValue={email}
+          value={email}
         />
 
-        <TextInput 
-          style={styles.inputPass}
+        <PrimaryInput 
+          secureTextEntry
           placeholder='Senha:'
           onChange={setPassword}
-          defaultValue={password}
+          value={password}
         />
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>Entrar</Text>      
-        </TouchableOpacity>
+        <PrimaryButton 
+          title="Entrar" 
+          onPress={() => {
+            navigation.navigate('Home')
+            console.log('Clicou!')
+          }}
+        />
 
         <View style={styles.containerLabels}>
           <Text style={styles.TextLabel}>OU</Text>
@@ -50,7 +55,6 @@ export default function Login({navigation}){
             <Text style={styles.TextLabel2}>Não tem uma conta? Cadastre-se</Text>
           </TouchableOpacity>
         </View>
-      </View>
     </View>)
 }
 
@@ -62,40 +66,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    containerInput:{
-      width: '90%',
-    },
-    inputPass:{
-      height: 40,
-      padding: 10,
-      margin: 10,
-      borderWidth: 1,
-      borderColor: '#8a8d8f',
-      borderRadius: 25
-    },
-    input:{
-      margin: 10,
-      height: 40,
-      padding: 10,
-      borderWidth: 1,
-      borderColor: '#8a8d8f',
-      borderRadius: 25
-    },
-    button:{
-      width: '90%',
-      backgroundColor: '#6E42F1',
-      alignItems: 'center',
-      justifyContent: 'center',
-      margin: 15,
-      height: 40,
-      padding: 10,
-      borderRadius: 50
-    },
-    textButton:{
-      color: '#FFF',
-      textAlign: 'center',
-      fontSize: 16,
-    },
+
     containerImg:{
       alignItems: 'center',
       justifyContent: 'center',

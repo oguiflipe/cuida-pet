@@ -1,39 +1,41 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, ScrollView, Button } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
 
 export default function Pets({navigation}){
 
+  //array com os nomes e raças dos animais
+  var raca = ["Golden", "Salsisha", "Vira-Lata", "Vira-Lata"];
+  var pet = ["Roberto", "Claudio", "Berenice", "Romário"];
+
+  //array com os horários
+  var horarioVisita = ["14:00", "15:40", "16:00", "16:30"]
+  var dataVisita = ["24/03/2024", "27/03/2024", "27/03/2024"]
+
   const [namePet, setNamePet] = useState({pet});
-  const [racaPet, setRacaPet] = useState('');
+  const [racaPet, setRacaPet] = useState({raca});
 
-  const pet = 'Roberto'
-  const raca = 'Golden'
-
+  
   const handleNamePet = () => {
     setNamePet(namePet);
   }
 
   const handleRacaPet = () => {
-    setNamePet(racaPet);
+    setRacaPet(racaPet);
   }
-
 
 
     return( 
     <View style={styles.container}>
       <Text style={styles.title}>Meus Pets</Text>
 
-
-
       <ScrollView 
         style={styles.scroollView}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       >
-
 
       <View style={styles.containerImg}>
         <View style={styles.img}>
@@ -44,11 +46,11 @@ export default function Pets({navigation}){
             <Text 
               style={styles.animalName}
               value={handleNamePet}
-            >{pet}</Text>
+            >{pet[0]}</Text>
             <Text 
               style={styles.animalName}
               value={handleRacaPet}
-            >{raca}</Text>
+            >{raca[0]}</Text>
         </View>
 
         <View style={styles.img}>
@@ -59,11 +61,11 @@ export default function Pets({navigation}){
             <Text 
               style={styles.animalName}
               value={handleNamePet}
-            >{pet}</Text>
+            >{pet[1]}</Text>
             <Text 
               style={styles.animalName}
               value={handleRacaPet}
-            >{raca}</Text>
+            >{raca[1]}</Text>
         </View>
 
 
@@ -75,23 +77,29 @@ export default function Pets({navigation}){
             <Text 
               style={styles.animalName}
               value={handleNamePet}
-            >{pet}</Text>
+            >{pet[2]}</Text>
             <Text 
               style={styles.animalName}
               value={handleRacaPet}
-            >{raca}</Text>
+            >{raca[2]}</Text>
         </View>
 
         <View style={styles.img}>
-            <Image
+        <Image
               style={styles.petLogo}
               source={require('../../assets/gato.jpg')}
             />
-            <Text style={styles.animalName}>Fabricio</Text>
-            <Text style={styles.animalName}>Vira-lata</Text>
+            <Text 
+              style={styles.animalName}
+              value={handleNamePet}
+            >{pet[3]}</Text>
+            <Text 
+              style={styles.animalName}
+              value={handleRacaPet}
+            >{raca[3]}</Text>
         </View>
 
-
+      
 
         <TouchableOpacity 
           style={styles.btnAdd}
@@ -116,10 +124,10 @@ export default function Pets({navigation}){
       >
       <View style={styles.cardAgendamentos}>
         <View style={styles.textAgendamentos}>
-          <Text style={styles.labelAgendamento}>Vacina</Text>
-          <Text style={styles.labelInfos}>Nome: </Text>
-          <Text style={styles.labelInfos}>Data: </Text>
-          <Text style={styles.labelInfos}>Horário: </Text>
+          <Text style={styles.labelAgendamento}>Banho e Tosa</Text>
+          <Text style={styles.labelInfos}>Nome: {pet[0]} </Text>
+          <Text style={styles.labelInfos}>Data: {dataVisita[1]}</Text>
+          <Text style={styles.labelInfos}>Horário: {horarioVisita[0]}h</Text>
         </View>
           <View style={styles.img2}>
             <Image
@@ -132,9 +140,9 @@ export default function Pets({navigation}){
       <View style={styles.cardAgendamentos}>
         <View style={styles.textAgendamentos}>
           <Text style={styles.labelAgendamento}>Vacina</Text>
-          <Text style={styles.labelInfos}>Nome: </Text>
-          <Text style={styles.labelInfos}>Data: </Text>
-          <Text style={styles.labelInfos}>Horário: </Text>
+          <Text style={styles.labelInfos}>Nome: {pet[3]}</Text>
+          <Text style={styles.labelInfos}>Data: {dataVisita[0]}</Text>
+          <Text style={styles.labelInfos}>Horário: {horarioVisita[2]}h</Text>
         </View>
           <View style={styles.img2}>
             <Image
@@ -144,48 +152,35 @@ export default function Pets({navigation}){
         </View>
       </View>
 
-      <View style={styles.cardAgendamentos}>
-        <View style={styles.textAgendamentos}>
-          <Text style={styles.labelAgendamento}>Vacina</Text>
-          <Text style={styles.labelInfos}>Nome: </Text>
-          <Text style={styles.labelInfos}>Data: </Text>
-          <Text style={styles.labelInfos}>Horário: </Text>
-        </View>
-          <View style={styles.img2}>
-            <Image
-              style={styles.petLogo2}
-              source={require('../../assets/cachorro2.jpg')}
-            />
-        </View>
-      </View>
 
       <View style={styles.cardAgendamentos}>
         <View style={styles.textAgendamentos}>
           <Text style={styles.labelAgendamento}>Vacina</Text>
-          <Text style={styles.labelInfos}>Nome: </Text>
-          <Text style={styles.labelInfos}>Data: </Text>
-          <Text style={styles.labelInfos}>Horário: </Text>
-        </View>
-          <View style={styles.img2}>
-            <Image
-              style={styles.petLogo2}
-              source={require('../../assets/cachorro3.jpg')}
-            />
-        </View>
-      </View>
-
-      <View style={styles.cardAgendamentos}>
-        <View style={styles.textAgendamentos}>
-          <Text style={styles.labelAgendamento}>Vacina</Text>
-          <Text style={styles.labelInfos}>Nome: </Text>
-          <Text style={styles.labelInfos}>Data: </Text>
-          <Text style={styles.labelInfos}>Horário: </Text>
+          <Text style={styles.labelInfos}>Nome: {pet[0]}</Text>
+          <Text style={styles.labelInfos}>Data: {dataVisita[2]}</Text>
+          <Text style={styles.labelInfos}>Horário: {horarioVisita[3]}h </Text>
         </View>
           <View style={styles.img2}>
             <Image
               style={styles.petLogo2}
               source={require('../../assets/cachorro.jpg')}
             />
+        </View>
+      </View>
+
+      <View style={styles.cardNewAgendamentos}>
+        <View style={styles.textNewAgendamentos}>
+          
+        <TouchableOpacity 
+          style={styles.btnAddConsult}
+          onPress={() => {
+            navigation.navigate('')
+            console.log('Clicou!')
+          }}
+        >
+          <Ionicons style={styles.petAdd} name="md-add-circle" />
+          <Text style={styles.newConsult}>Adicionar nova consulta</Text>
+        </TouchableOpacity>
         </View>
       </View>
 
@@ -291,6 +286,26 @@ const styles = StyleSheet.create({
     labelInfos:{
       color: '#8a8d8f',
       fontSize: 14,
-    }
+    },
 
+    //botão adicionar nova consulta
+
+    btnAddConsult:{
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: 50,
+      color: '#6E42F1'
+    },
+    cardNewAgendamentos:{
+      float: 'right',
+      cursor: 'pointer',
+      zIndex: 0,
+      padding: 20,
+      position: 'relative'
+    },
+    newConsult:{
+      color: '#8a8d8f',
+      fontSize: 16,
+      fontWeight: 'bold',
+    }
   });
